@@ -1,10 +1,11 @@
-from django.views.generic import UpdateView
-from .models import Profile
-from .mixins import OwnerMixin
-from django.urls import reverse
-from .forms import ProfileForm
-from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse
+from django.views.generic import UpdateView
+
+from .forms import ProfileForm
+from .mixins import OwnerMixin
+from .models import Profile
 
 
 class ProfileUpdateView(OwnerMixin, SuccessMessageMixin, UpdateView):

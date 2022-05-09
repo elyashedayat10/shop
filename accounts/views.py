@@ -1,11 +1,13 @@
 from random import randint
-from django.shortcuts import get_object_or_404
+
+from braces.views import AnonymousRequiredMixin
+
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
-from .mixins import AccessMixin
+from django.urls import reverse_lazy
 from .forms import OtpCodeForm, UserBaseForm
 from .models import OtpCode
 from .utils import send_otp
@@ -13,9 +15,10 @@ from .utils import send_otp
 user = get_user_model()
 
 
-class UserAuthView(AccessMixin, View):
+class UserAuthView(AnonymousRequiredMixin, View):
     template_name = "accounts/auth.html"
     form_class = UserBaseForm
+    authenticated_redirect_url = reverse_lazy('account:dashboard')
 
     def get(self, request):
         return render(request, self.template_name, {"form": self.form_class})
@@ -36,9 +39,10 @@ class UserAuthView(AccessMixin, View):
         return render(request, self.template_name, {"form": form})
 
 
-class UserVerifyView(AccessMixin, View):
+class UserVerifyView(AnonymousRequiredMixin, View):
     template_name = "accounts/verify.html"
     form_class = OtpCodeForm
+    authenticated_redirect_url = reverse_lazy('account:dashboard')
 
     def get(self, request):
         return render(request, self.template_name, {"form": self.form_class})

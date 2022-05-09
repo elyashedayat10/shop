@@ -1,8 +1,9 @@
-from django.db import models
 from django.conf import settings
-from helpers import get_file_path
 from django.core.validators import RegexValidator
+from django.db import models
 from django_extensions.db.models import TimeStampedModel
+
+from helpers import get_file_path
 
 user_model = settings.AUTH_USER_MODEL
 

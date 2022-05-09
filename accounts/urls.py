@@ -1,10 +1,7 @@
 from django.urls import path
-from .views import (
-    UserAuthView,
-    UserVerifyView,
-    UserLogoutView,
-    UserDashboardView,
-)
+
+from .views import (UserAuthView, UserDashboardView, UserLogoutView,
+                    UserVerifyView)
 
 app_name = 'account'
 urlpatterns = [

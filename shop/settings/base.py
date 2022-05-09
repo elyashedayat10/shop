@@ -109,3 +109,4 @@ STATIC_ROOT = BASE_DIR / "static_cdn" / "static"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.User"
+LOGIN_URL = 'accounts:auth'

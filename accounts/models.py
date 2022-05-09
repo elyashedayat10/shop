@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.core.validators import RegexValidator
 from django.db import models
+
 from .managers import UserManager
 
 
@@ -31,4 +32,4 @@ class OtpCode(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.code} at {self.created} to {self.phone_number}'
+        return f"{self.code} at {self.created} to {self.phone_number}"

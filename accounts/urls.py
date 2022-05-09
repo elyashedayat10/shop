@@ -3,11 +3,13 @@ from .views import (
     UserAuthView,
     UserVerifyView,
     UserLogoutView,
+    UserDashboardView,
 )
 
-app_name = 'accounts'
+app_name = 'account'
 urlpatterns = [
     path('auth/', UserAuthView.as_view(), name='auth'),
-    path('verify/', UserAuthView.as_view(), name='verify'),
-    path('logout/', UserAuthView.as_view(), name='logout'),
+    path('verify/', UserVerifyView.as_view(), name='verify'),
+    path('logout/', UserLogoutView.as_view(), name='logout'),
+    path('dashboard/', UserDashboardView.as_view(), name='dashboard'),
 ]

@@ -1,11 +1,11 @@
 from random import randint
-
+from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.views.generic import View
-
+from .mixins import AccessMixin
 from .forms import OtpCodeForm, UserBaseForm
 from .models import OtpCode
 from .utils import send_otp
@@ -13,7 +13,7 @@ from .utils import send_otp
 user = get_user_model()
 
 
-class UserAuthView(View):
+class UserAuthView(AccessMixin, View):
     template_name = "accounts/auth.html"
     form_class = UserBaseForm
 
@@ -36,7 +36,7 @@ class UserAuthView(View):
         return render(request, self.template_name, {"form": form})
 
 
-class UserVerifyView(View):
+class UserVerifyView(AccessMixin, View):
     template_name = "accounts/verify.html"
     form_class = OtpCodeForm
 
@@ -67,3 +67,9 @@ class UserLogoutView(LoginRequiredMixin, View):
         logout(request)
         messages.success(request, "", "success")
         return redirect()
+
+
+class UserDashboardView(LoginRequiredMixin, View):
+    def get(self, request):
+        user_obj = get_object_or_404(user, id=self.request.user)
+        return render(request, 'accounts/dashboard.html', {'user': user_obj})

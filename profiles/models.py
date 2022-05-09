@@ -12,7 +12,7 @@ class Profile(TimeStampedModel):
     user = models.OneToOneField(
         user_model,
         on_delete=models.CASCADE,
-        related_name='profile',
+        related_name="profile",
     )
     image = models.ImageField(
         upload_to=get_file_path,

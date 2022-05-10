@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, View
+from django.core.exceptions import PermissionDenied
 
 from .forms import OtpCodeForm, AuthForm, AdminForm
 from .mixins import AdminMixin
@@ -22,7 +23,8 @@ class UserAuthView(AnonymousRequiredMixin, View):
     authenticated_redirect_url = reverse_lazy("account:dashboard")
 
     def get(self, request):
-        return render(request, self.template_name, {"form": self.form_class})
+        form = self.form_class
+        return render(request, self.template_name, {"form": form})
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -35,7 +37,7 @@ class UserAuthView(AnonymousRequiredMixin, View):
                 "phone_number": form.cleaned_data["phone_number"],
             }
             messages.success(request, "code sent", "success")
-            return redirect()
+            return redirect("account:verify")
         messages.error(request, "error", "danger")
         return render(request, self.template_name, {"form": form})
 
@@ -44,6 +46,11 @@ class UserVerifyView(AnonymousRequiredMixin, View):
     template_name = "accounts/verify.html"
     form_class = OtpCodeForm
     authenticated_redirect_url = reverse_lazy("account:dashboard")
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.Meta.HTTP_REFERE == '':
+            return super(UserVerifyView, self).dispatch(request, *args, **kwargs)
+        raise PermissionDenied
 
     def get(self, request):
         return render(request, self.template_name, {"form": self.form_class})
@@ -62,7 +69,7 @@ class UserVerifyView(AnonymousRequiredMixin, View):
                 else:
                     user.objects.create_user(phone_number=user_session)
                 messages.success(request, "", "")
-                return redirect("")
+                return redirect("account:dashboard")
         messages.error(request, "", "")
         return render(request, self.template_name, {"form": self.form_class})
 
@@ -71,12 +78,12 @@ class UserLogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         messages.success(request, "", "success")
-        return redirect()
+        return redirect("account:auth")
 
 
 class UserDashboardView(LoginRequiredMixin, View):
-    def get(self, request):
-        user_obj = get_object_or_404(user, id=self.request.user)
+    def get(self, request, user_id):
+        user_obj = get_object_or_404(user, id=user_id)
         return render(request, "accounts/dashboard.html", {"user": user_obj})
 
 
@@ -91,6 +98,7 @@ class UserListView(AdminMixin, ListView):
 
 
 class AdminUserCreateView(SuperuserRequiredMixin, View):
+    redirect_unauthenticated_users = reverse_lazy('account:auth')
     template_name = "accounts/admin_create.html"
     form_class = AdminForm
 
@@ -102,18 +110,20 @@ class AdminUserCreateView(SuperuserRequiredMixin, View):
         if form.is_valid():
             cd = form.cleaned_data
             user.objects.create_admin_user(
-                phone_number=cd["phone_number"], password=cd["password"]
+                phone_number=cd["phone_number"],
+                password=cd["password"],
             )
             messages.success(request, "", "success")
-            return redirect("")
+            return redirect("account:admin_list")
         else:
             messages.error(request, "", "danger")
         return render(request, self.template_name, {"form": form})
 
 
 class UserDeleteView(SuperuserRequiredMixin, View):
+
     def get(self, request, user_id):
         user_obj = get_object_or_404(user, id=user_id)
         user_obj.delete()
         messages.success(request, "", "success")
-        return redirect()
+        return redirect("account:admin_list")

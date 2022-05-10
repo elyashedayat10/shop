@@ -1,10 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'panel/base.html' %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="container-full">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="page-title">dashboard</h3>
+                        <div class="d-inline-block align-items-center">
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html"><i
+                                            class="mdi mdi-home-outline"></i></a></li>
+                                    <li class="breadcrumb-item" aria-current="page">صفحات</li>
+                                    <li class="breadcrumb-item active" aria-current="page">پروفایل</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-</body>
-</html>
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="row">
+                    <div class="col-12 col-lg-5 col-xl-4">
+
+                        <div class="box box-inverse bg-img" style="background-image: url(../images/gallery/full/1.jpg);"
+                             data-overlay="2">
+
+
+                            <div class="box-body text-center pb-50">
+                                <a href="#">
+                                    <img class="avatar avatar-xxl avatar-bordered" src="{{ user.profile.image.url }}"
+                                         alt="">
+                                </a>
+                                <h4 class="mt-2 mb-0"><a class="hover-primary text-white"
+                                                         href="#">{{ user.phone_number }}</a></h4>
+                                <span><i class="fa fa-map-marker w-20"></i> تهران</span>
+                            </div>
+
+
+                        </div>
+
+                        <!-- Profile Image -->
+                        <div class="box">
+                            <div class="box-body box-profile">
+                                <div class="row">
+                                    <h3>Personal Info</h3>
+                                    <div class="col-12">
+                                        <div>
+                                            <p>Full_name: <span
+                                                    class="text-gray pl-10"></span>
+                                            </p>
+                                            <p>Phone_number : <span
+                                                    class="text-gray pl-10">{{ user.profile.phone_number }}</span></p>
+                                            <p>Email : <span class="text-gray pl-10">{{ user.profile.email }}</span></p>
+                                            <p>Recive Blog Post : <span
+                                                    class="text-gray pl-10">{{ user.profile.receive_blog }}</span></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+
+                    </div>
+                    <div class="col-12 col-lg-7 col-xl-8">
+
+                        <div class="nav-tabs-custom box-profile">
+                            <ul class="nav nav-tabs">
+                                <li><a class="active" href="#usertimeline" data-toggle="tab">Latest orders</a></li>
+                                <li><a href="#activity" data-toggle="tab">Favorite product</a></li>
+                                <li><a href="#settings" data-toggle="tab">latest products you have seen</a></li>
+                            </ul>
+
+                            <div class="box box-inverse box-carousel slide" data-ride="carousel"
+                                 style="background-color: #00aced">
+                                <div class="box-header no-border">
+                                    <span class="fa fa-twitter font-size-30"></span>
+                                    <div class="box-tools pull-right">
+                                        <h5 class="box-title box-title-bold"></h5>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-inner">
+                                    <blockquote
+                                            class="blockquote blockquote-inverse no-border m-0 py-15 carousel-item active">
+                                        <p>به طور کلی ، الزامات پلاگین را برای محصولات قابل تحویل چند منظوره مشخص می
+                                            کنید.
+                                            یکپارچه عملکرد متقابل را انکوب کنید.</p>
+                                        <div class="flexbox">
+                                            <time class="text-white" datetime="2017-11-22 20:00">22 آبان 1399</time>
+                                            <span><i class="fa fa-heart"></i> 62</span>
+                                        </div>
+                                    </blockquote>
+
+                                    <blockquote class="blockquote blockquote-inverse no-border m-0 py-15 carousel-item">
+                                        <p>انقلابی منحصر به فرد در کاتالیزورهای اهرمی برای تغییر در خدمات وب کلاس جهانی
+                                            ایجاد
+                                            کرده است. به طور موثر در رقابت.</p>
+                                        <div class="flexbox">
+                                            <time class="text-white" datetime="2017-11-22 20:00">22 آبان 1399</time>
+                                            <span><i class="fa fa-heart"></i> 45</span>
+                                        </div>
+                                    </blockquote>
+
+                                    <blockquote class="blockquote blockquote-inverse no-border m-0 py-15 carousel-item">
+                                        <p>با اشتیاق محصولات تولید شده از میان رسانه ها را بدون خدمات وب پردازش محور
+                                            بهینه
+                                            کنید.
+                                            راحت</p>
+                                        <div class="flexbox">
+                                            <time class="text-white" datetime="2017-11-22 20:00">22 آبان 1399</time>
+                                            <span><i class="fa fa-heart"></i> 65</span>
+                                        </div>
+                                    </blockquote>
+                                </div>
+
+                            </div>                            <!-- /.tab-content -->
+                        </div>
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+                </div>
+                <!-- /.row -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+{% endblock %}

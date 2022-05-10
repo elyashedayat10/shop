@@ -1,10 +1,77 @@
+{% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>Auth</title>
+
+    <!-- Vendors Style-->
+    <link rel="stylesheet" href="{% static 'panel/css/vendors_css.css' %}">
+
+    <!-- Style-->
+    <link rel="stylesheet" href="{% static 'panel/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'panel/css/skin_color.css' %}">
+
 </head>
-<body>
+
+<body class="hold-transition theme-primary bg-gradient-primary">
+
+<div class="container h-p100">
+    <div class="row align-items-center justify-content-md-center h-p100">
+
+        <div class="col-12">
+            <div class="row justify-content-center no-gutters">
+                <div class="col-lg-4 col-md-5 col-12">
+                    <div class="content-top-agile p-10">
+                        <h4 class="mb-0 text-white">Enter Your Phone Number</h4>
+                    </div>
+                    <div class="p-30 rounded30 box-shadowed b-2 b-dashed">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+											<span class="input-group-text bg-transparent text-white"><i
+                                                    class="ti-email"></i></span>
+                                    </div>
+                                    {% for field in form.visible_fields %}
+                                        {{ field|add_class:'form-control pl-15 bg-transparent text-white plc-white' }}
+                                        {% for error in field.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                        {% endfor %}
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="submit"
+                                            class="btn btn-info btn-rounded margin-top-10">Submit
+                                    </button>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Vendor JS -->
+<script src="{% static 'panel/js/vendors.min.js' %}"></script>
+<script src="{% static 'panel/icons/feather-icons/feather.min.js' %}"></script>
 
 </body>
+
 </html>

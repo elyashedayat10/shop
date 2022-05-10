@@ -4,18 +4,15 @@ from kavenegar import *
 
 def send_otp(phone_number, code):
     try:
-        api = KavenegarAPI(config("KAVENEGAR_API_KEY"), timeout=20)
+        api = KavenegarAPI(config("KAVENEGAR_API_KEY"))
         params = {
-            "receptor": phone_number,
-            "template": "",
-            "token": code,
-            "type": "sms",
+            'sender': '',
+            'receptor': phone_number,
+            'message': f'{code}'
         }
-        response = api.verify_lookup(params)
+        response = api.sms_send(params)
         print(response)
-
     except APIException as e:
         print(e)
-
     except HTTPException as e:
         print(e)

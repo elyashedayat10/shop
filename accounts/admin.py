@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .forms import UserBaseForm
+from .forms import UserCreateForm, UserChangeForm
 from .models import User
 
 
 class UserAdmin(BaseUserAdmin):
-    form = UserBaseForm
-    add_form = UserBaseForm
+    form = UserCreateForm
+    add_form = UserChangeForm
 
     list_display = ("phone_number",)
     list_filter = ("is_admin",)

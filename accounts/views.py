@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, View
 
-from .forms import OtpCodeForm, UserBaseForm
+from .forms import OtpCodeForm, AuthForm, AdminForm
 from .mixins import AdminMixin
 from .models import OtpCode
 from .utils import send_otp
@@ -18,7 +18,7 @@ user = get_user_model()
 
 class UserAuthView(AnonymousRequiredMixin, View):
     template_name = "accounts/auth.html"
-    form_class = UserBaseForm
+    form_class = AuthForm
     authenticated_redirect_url = reverse_lazy("account:dashboard")
 
     def get(self, request):
@@ -92,7 +92,7 @@ class UserListView(AdminMixin, ListView):
 
 class AdminUserCreateView(SuperuserRequiredMixin, View):
     template_name = "accounts/admin_create.html"
-    form_class = UserBaseForm
+    form_class = AdminForm
 
     def get(self, request):
         return render(request, self.template_name, {"form": self.form_class})

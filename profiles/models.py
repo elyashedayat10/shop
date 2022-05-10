@@ -26,13 +26,4 @@ class Profile(TimeStampedModel):
         unique=True,
         blank=True,
     )
-    card_number = models.CharField(
-        max_length=16,
-        # validators=RegexValidator[''],
-        blank=True,
-    )
-    national_code = models.CharField(
-        max_length=10,
-        # validators=RegexValidator[''],
-    )
     receive_blog = models.BooleanField(default=False)

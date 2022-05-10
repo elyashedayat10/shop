@@ -12,16 +12,5 @@ class ProfileForm(forms.ModelForm):
             "full_name",
             "email",
             "image",
-            "card_number",
-            "national_code",
             "receive_blog",
         )
-
-        labels = {
-            "full_name": "نام و نام خانوادگی",
-            "email": "ایمیل",
-            "image": "تصویر پروفایل",
-            "card_number": "شماره کارت",
-            "national_code": "شماره ملی",
-            "receive_blog": "دربافت خبرنامه",
-        }

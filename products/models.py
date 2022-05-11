@@ -1,8 +1,8 @@
-from django.db import models
-from django_extensions.db.models import TimeStampedModel
 from django.core.validators import MaxValueValidator
+from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from django_extensions.db.models import TimeStampedModel
 
 
 # Create your models here.

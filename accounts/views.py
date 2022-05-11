@@ -4,12 +4,12 @@ from braces.views import AnonymousRequiredMixin, SuperuserRequiredMixin
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, View, FormView
-from django.core.exceptions import PermissionDenied
+from django.views.generic import FormView, ListView, View
 
-from .forms import OtpCodeForm, AuthForm
+from .forms import AuthForm, OtpCodeForm
 from .mixins import AdminMixin
 from .models import OtpCode
 from .utils import send_otp
@@ -49,7 +49,7 @@ class UserVerifyView(AnonymousRequiredMixin, FormView):
     authenticated_redirect_url = reverse_lazy("account:dashboard")
 
     def dispatch(self, request, *args, **kwargs):
-        if self.request.META.get('HTTP_REFERER') == '':
+        if self.request.META.get("HTTP_REFERER") == "":
             return super(UserVerifyView, self).dispatch(request, *args, **kwargs)
         raise PermissionDenied
 
@@ -68,7 +68,7 @@ class UserVerifyView(AnonymousRequiredMixin, FormView):
         return super(UserVerifyView, self).form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, '', '')
+        messages.error(self.request, "", "")
         return super(UserVerifyView, self).form_invalid(form)
 
 
@@ -97,7 +97,7 @@ class UserListView(AdminMixin, ListView):
 
 
 class AdminUserCreateView(SuperuserRequiredMixin, FormView):
-    redirect_unauthenticated_users = reverse_lazy('account:auth')
+    redirect_unauthenticated_users = reverse_lazy("account:auth")
     template_name = "accounts/admin_create.html"
     form_class = AuthForm
 

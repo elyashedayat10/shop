@@ -6,16 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0002_rename_receive_post_profile_receive_blog'),
+        ("profiles", "0002_rename_receive_post_profile_receive_blog"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='profile',
-            name='card_number',
+            model_name="profile",
+            name="card_number",
         ),
         migrations.RemoveField(
-            model_name='profile',
-            name='national_code',
+            model_name="profile",
+            name="national_code",
         ),
     ]

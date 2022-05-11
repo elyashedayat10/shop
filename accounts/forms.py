@@ -40,24 +40,21 @@ class UserChangeForm(forms.ModelForm):
         )
 
 
-class AdminForm(forms.ModelForm):
+class AuthForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     password_confirm = forms.CharField(widget=forms.PasswordInput)
+
+    def __init__(self, *args, **kwargs):
+        user_auth = kwargs.pop('user_auth', False)
+        super(AuthForm, self).__init__(*args, **kwargs)
+
+        if user_auth:
+            self.fields.pop('password')
+            self.fields.pop('password_confirm')
 
     class Meta:
         model = User
         fields = ("phone_number",)
-
-
-class AuthForm(AdminForm):
-    class Meta:
-        model = User
-        fields = ('phone_number',)
-
-    def __init__(self, *args, **kwargs):
-        super(AuthForm, self).__init__(*args, **kwargs)
-        self.fields.pop('password')
-        self.fields.pop('password_confirm')
 
 
 class OtpCodeForm(forms.Form):

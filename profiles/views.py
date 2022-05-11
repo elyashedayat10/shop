@@ -17,7 +17,7 @@ class ProfileUpdateView(OwnerMixin, SuccessMessageMixin, UpdateView):
     success_message = ""
 
     def get_success_url(self):
-        return reverse("accounts:dashboard")
+        return reverse("account:dashboard")
 
     def form_invalid(self, form):
         messages.error(self.request, "", "danger")

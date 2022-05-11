@@ -1,110 +1,118 @@
-<div class="content-wrapper">
-    <div class="container-full">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="d-flex align-items-center">
-                <div class="mr-auto">
-                    <h3 class="page-title">Useres List</h3>
-                    <div class="d-inline-block align-items-center">
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html"><i
-                                        class="mdi mdi-home-outline"></i></a></li>
-                            </ol>
-                        </nav>
+{% extends 'panel/base.html' %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="container-full">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="page-title">Useres List</h3>
+                        <div class="d-inline-block align-items-center">
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html"><i
+                                            class="mdi mdi-home-outline"></i></a></li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Main content -->
-        <section class="content">
+            <!-- Main content -->
+            <section class="content">
 
-            <div class="row">
+                <div class="row">
 
 
-                <div class="col-12">
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h4 class="box-title">Users</h4>
-                            <div class="box-controls pull-right">
-                                <div class="lookup lookup-circle lookup-right">
-                                    <input type="text" name="s">
+                    <div class="col-12">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">Users</h4>
+                                <div class="box-controls pull-right">
+                                    <div class="lookup lookup-circle lookup-right">
+                                        <input type="text" name="s">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <tr>
-                                        <th>فاکتور</th>
-                                        <th>کاربر</th>
-                                        <th>تاریخ</th>
-                                        <th>قیمت</th>
-                                        <th>وضعیت</th>
-                                        <th>کشور</th>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0)">سفارش #123456</a></td>
-                                        <td>لورم ایپسوم</td>
-                                        <td><span class="text-muted"><i class="fa fa-clock-o"></i> 26 آبان 1399</span>
-                                        </td>
-                                        <td>158,000 تومان</td>
-                                        <td><span class="badge badge-pill badge-danger">در حال ارسال</span></td>
-                                        <td>ایران</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0)">سفارش #458789</a></td>
-                                        <td>لورم ایپسوم</td>
-                                        <td><span class="text-muted"><i class="fa fa-clock-o"></i> 26 آبان 1399</span>
-                                        </td>
-                                        <td>55,000 تومان</td>
-                                        <td><span class="badge badge-pill badge-warning">ارسال شده</span></td>
-                                        <td>ترکیه</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0)">سفارش #84532</a></td>
-                                        <td>لورم ایپسوم</td>
-                                        <td><span class="text-muted"><i class="fa fa-clock-o"></i> 26 آبان 1399</span>
-                                        </td>
-                                        <td>845,000 تومان</td>
-                                        <td><span class="badge badge-pill badge-danger">در حال بررسی</span></td>
-                                        <td>استرالیا</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0)">سفارش #48956</a></td>
-                                        <td>لورم ایپسوم</td>
-                                        <td><span class="text-muted"><i class="fa fa-clock-o"></i> 26 آبان 1399</span>
-                                        </td>
-                                        <td>145,000 تومان</td>
-                                        <td><span class="badge badge-pill badge-success">پرداخت شده</span></td>
-                                        <td>کانادا</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="javascript:void(0)">سفارش #92154</a></td>
-                                        <td>لورم ایپسوم</td>
-                                        <td><span class="text-muted"><i class="fa fa-clock-o"></i> 26 آبان 1399</span>
-                                        </td>
-                                        <td>450,000 تومان</td>
-                                        <td><span class="badge badge-pill badge-warning">ارسال شده</span></td>
-                                        <td>چین</td>
-                                    </tr>
-                                </table>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th>فاکتور</th>
+                                            <th>کاربر</th>
+                                            <th>تاریخ</th>
+                                            <th>قیمت</th>
+                                            <th>وضعیت</th>
+                                            <th>کشور</th>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">سفارش #123456</a></td>
+                                            <td>لورم ایپسوم</td>
+                                            <td><span class="text-muted"><i
+                                                    class="fa fa-clock-o"></i> 26 آبان 1399</span>
+                                            </td>
+                                            <td>158,000 تومان</td>
+                                            <td><span class="badge badge-pill badge-danger">در حال ارسال</span></td>
+                                            <td>ایران</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">سفارش #458789</a></td>
+                                            <td>لورم ایپسوم</td>
+                                            <td><span class="text-muted"><i
+                                                    class="fa fa-clock-o"></i> 26 آبان 1399</span>
+                                            </td>
+                                            <td>55,000 تومان</td>
+                                            <td><span class="badge badge-pill badge-warning">ارسال شده</span></td>
+                                            <td>ترکیه</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">سفارش #84532</a></td>
+                                            <td>لورم ایپسوم</td>
+                                            <td><span class="text-muted"><i
+                                                    class="fa fa-clock-o"></i> 26 آبان 1399</span>
+                                            </td>
+                                            <td>845,000 تومان</td>
+                                            <td><span class="badge badge-pill badge-danger">در حال بررسی</span></td>
+                                            <td>استرالیا</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">سفارش #48956</a></td>
+                                            <td>لورم ایپسوم</td>
+                                            <td><span class="text-muted"><i
+                                                    class="fa fa-clock-o"></i> 26 آبان 1399</span>
+                                            </td>
+                                            <td>145,000 تومان</td>
+                                            <td><span class="badge badge-pill badge-success">پرداخت شده</span></td>
+                                            <td>کانادا</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">سفارش #92154</a></td>
+                                            <td>لورم ایپسوم</td>
+                                            <td><span class="text-muted"><i
+                                                    class="fa fa-clock-o"></i> 26 آبان 1399</span>
+                                            </td>
+                                            <td>450,000 تومان</td>
+                                            <td><span class="badge badge-pill badge-warning">ارسال شده</span></td>
+                                            <td>چین</td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
+                            <!-- /.box-body -->
                         </div>
-                        <!-- /.box-body -->
+                        <!-- /.box -->
                     </div>
-                    <!-- /.box -->
+
+
                 </div>
+                <!-- /.row -->
 
-
-            </div>
-            <!-- /.row -->
-
-        </section>
-        <!-- /.content -->
+            </section>
+            <!-- /.content -->
+        </div>
     </div>
-</div>
 
 
+{% endblock %}

@@ -33,8 +33,8 @@
 
                             <div class="box-body text-center pb-50">
                                 <a href="#">
-                                    <img class="avatar avatar-xxl avatar-bordered" src="{{ user.profile.image.url }}"
-                                         alt="">
+                                    {#                                    <img class="avatar avatar-xxl avatar-bordered" src="{{ user.profile.image.url }}"#}
+                                    {#                                         alt="">#}
                                 </a>
                                 <h4 class="mt-2 mb-0"><a class="hover-primary text-white"
                                                          href="#">{{ user.phone_number }}</a></h4>
@@ -61,6 +61,8 @@
                                                     class="text-gray pl-10">{{ user.profile.receive_blog }}</span></p>
                                         </div>
                                     </div>
+                                    <a class="form-control btn btn-warning"
+                                       href="{% url "profile:update" user.profile.id %}">update profile</a>
 
                                 </div>
                             </div>

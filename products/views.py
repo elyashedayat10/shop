@@ -13,11 +13,13 @@ from .models import Product
 class ProductsListAdmin(AdminMixin, ListView):
     model = Product
     template_name = "products/product_list_panel.html"
+    context_object_name = 'product_list'
 
 
 class ProductDetailView(AdminMixin, DetailView):
     model = Product
     template_name = "products/product_detail_panel.html"
+    context_object_name = 'product'
 
 
 class ProductDeleteView(AdminMixin, View):

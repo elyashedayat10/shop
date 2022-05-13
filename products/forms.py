@@ -17,6 +17,7 @@ class ProductForm(forms.ModelForm):
             "count",
             "image",
             "price",
+            "brand",
         ]
 
 

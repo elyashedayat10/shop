@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django_extensions.db.models import TimeStampedModel
 from helpers import get_file_path
+from brands.models import Brand
 
 
 # Create your models here.
@@ -18,6 +19,13 @@ class Product(TimeStampedModel):
     count = models.PositiveIntegerField()
     image = models.ImageField(upload_to=get_file_path, blank=True)
     price = models.IntegerField()
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.CASCADE,
+        related_name='products',
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.name
@@ -28,4 +36,3 @@ class Product(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("products:detail", args=[self.slug, ])
-

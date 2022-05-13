@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+
 from helpers import get_file_path
 
 

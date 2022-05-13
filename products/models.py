@@ -10,12 +10,12 @@ class Product(TimeStampedModel):
     name = models.CharField(max_length=500)
     slug = models.SlugField(unique=True)
     description = models.TextField()
-    screen_size = models.PositiveIntegerField(MaxValueValidator(100))
-    cpu_cache = models.PositiveIntegerField(MaxValueValidator(24))
-    ram = models.PositiveIntegerField(MaxValueValidator(48))
-    memory_capacity = models.PositiveIntegerField(MaxValueValidator(1024))
+    screen_size = models.FloatField()
+    cpu_cache = models.FloatField()
+    ram = models.FloatField()
+    memory_capacity = models.FloatField()
     battery_description = models.CharField(max_length=500)
-    available = models.BooleanField(default=False)
+    count = models.PositiveIntegerField()
 
     def __str__(self):
         return self.name

@@ -13,5 +13,5 @@ class ProductForm(forms.ModelForm):
             'ram',
             'memory_capacity',
             'battery_description',
-            'available',
+
         ]

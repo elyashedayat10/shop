@@ -3,7 +3,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, View
-
+from .forms import ProductForm
 from accounts.mixins import AdminMixin
 
 from .models import Product
@@ -35,12 +35,14 @@ class ProductCreateView(AdminMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy("products:list_admin")
     template_name = "products/create.html"
     SuccessMessageMixin = "created successfully"
+    form_class = ProductForm
 
 
 class ProductUpdateView(AdminMixin, UpdateView):
     model = Product
     template_name = "products/update.html"
     SuccessMessageMixin = "updated successfully"
+    form_class = ProductForm
 
     def get_success_url(self):
         return reverse("products:detail_admin", args=[self.kwargs.get("slug")])

@@ -6,38 +6,38 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('products', '0002_product_slug'),
+        ("products", "0002_product_slug"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='product',
-            name='available',
+            model_name="product",
+            name="available",
         ),
         migrations.AddField(
-            model_name='product',
-            name='count',
+            model_name="product",
+            name="count",
             field=models.PositiveIntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='product',
-            name='cpu_cache',
+            model_name="product",
+            name="cpu_cache",
             field=models.FloatField(),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='memory_capacity',
+            model_name="product",
+            name="memory_capacity",
             field=models.FloatField(),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='ram',
+            model_name="product",
+            name="ram",
             field=models.FloatField(),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='screen_size',
+            model_name="product",
+            name="screen_size",
             field=models.FloatField(),
         ),
     ]

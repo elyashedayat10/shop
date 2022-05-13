@@ -1,10 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'panel/base.html' %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="container-full">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="page-title">Product Detail</h3>
+                        <div class="d-inline-block align-items-center">
+                            <nav>
+                                <a href="{% url "products:update" product.slug %}" class="btn btn-warning">Edite</a>
+                                <a href="{% url "products:delete" product.slug %}" class="btn btn-danger">Delete</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-</body>
-</html>
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="row">
+                    <div class="col-12 col-lg-5 col-xl-4">
+
+                        <div class="box box-inverse bg-img"
+                             style="height: 350px; background-image: url({{ product.image.url }});"
+                             data-overlay="2">
+
+
+                            <div class="box-body text-center pb-50">
+                                <a href="#">
+                                    {#                                    <img class="avatar avatar-xxl avatar-bordered" src="{{ user.profile.image.url }}"#}
+                                    {#                                         alt="">#}
+                                </a>
+                                <h4 class="mt-2 mb-0"><a class="hover-primary text-white"
+                                                         href="#">{{ product.name }}</a></h4>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-12 col-lg-7 col-xl-8">
+                        <div class="row">
+                            <h3>Product Info</h3>
+                            <div class="col-12">
+                                <div>
+                                    <h3>name:{{ product.name }} <span
+                                            class="text-gray pl-10"></span>
+                                    </h3>
+                                    <h3>description:{{ product.description }} <span
+                                            class="text-gray pl-10"></span>
+                                    </h3>
+                                    <h3>screen_size:{{ product.screen_size }} <span
+                                            class="text-gray pl-10"></span>
+                                    </h3>
+                                    <h3>cpu_cache:{{ product.cpu_cache }} <span
+                                            class="text-gray pl-10"></span>
+                                    </h3>
+                                    <h3>ram:{{ product.ram }} <span
+                                            class="text-gray pl-10"></span>
+                                    </h3>
+                                    <h3>memory_capacity:{{ product.memory_capacity }} <span
+                                            class="text-gray pl-10"></span>
+                                    </h3>
+                                    <h3>battery_description:{{ product.battery_description }} <span
+                                            class="text-gray pl-10"></span>
+                                    </h3>
+                                    <h3>count:{{ product.count }} <span
+                                            class="text-gray pl-10"></span>
+                                    </h3>
+
+
+                                </div>
+                            </div>
+                            {#                                    <a class="form-control btn btn-warning"#}
+                            {#                                       href="{% url "profile:update" user.profile.id %}">update profile</a>#}
+
+                        </div>
+
+                    </div>                            <!-- /.tab-content -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+        </div>
+    </div>
+    <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+    </div>
+    </div>
+{% endblock content %}

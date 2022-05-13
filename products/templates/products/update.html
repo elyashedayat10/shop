@@ -18,7 +18,7 @@
                                 <h4 class="box-title text-warning">Product Form</h4>
                             </div>
                             <div class="box-body">
-                                <form method="post" action="">
+                                <form method="post" action="" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {% for field in form.visible_fields %}
                                         <label class="col-form-label col-md-2">{{ field.label }}</label>

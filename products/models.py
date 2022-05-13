@@ -1,8 +1,8 @@
-from django.core.validators import MaxValueValidator
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django_extensions.db.models import TimeStampedModel
+from helpers import get_file_path
 
 
 # Create your models here.
@@ -16,6 +16,7 @@ class Product(TimeStampedModel):
     memory_capacity = models.FloatField()
     battery_description = models.CharField(max_length=500)
     count = models.PositiveIntegerField()
+    image = models.ImageField(upload_to=get_file_path,blank=True)
 
     def __str__(self):
         return self.name

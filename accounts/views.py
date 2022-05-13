@@ -89,13 +89,13 @@ class UserDashboardView(LoginRequiredMixin, View):
 class AdminUserListView(SuperuserRequiredMixin, ListView):
     queryset = user.objects.filter(is_admin=True)
     template_name = "accounts/admin_list.html"
-    context_object_name = 'admin_list'
+    context_object_name = "admin_list"
 
 
 class UserListView(AdminMixin, ListView):
     queryset = user.objects.exclude(is_admin=True)
     template_name = "accounts/user_list.html"
-    context_object_name = 'user_list'
+    context_object_name = "user_list"
 
 
 class AdminUserCreateView(SuperuserRequiredMixin, FormView):

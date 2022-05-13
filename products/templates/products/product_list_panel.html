@@ -48,7 +48,7 @@
                                             <th>ram</th>
                                             <th>memory_capacity</th>
                                             <th>count</th>
-                                            <th>edite</th>
+                                            <th>view</th>
                                         </tr>
                                         {% for product in product_list %}
                                             <tr>
@@ -59,7 +59,9 @@
                                                 <td>{{ product.ram }}</td>
                                                 <td>{{ product.memory_capacity }}</td>
                                                 <td>{{ product.count }}</td>
-                                                <td><a href="{% url "products:update" product.slug %}">update</a></td>
+                                                <td><a class="btn btn-primary"
+                                                       href="{% url "products:detail_admin" product.slug %}">View More</a>
+                                                </td>
                                             </tr>
                                         {% empty %}
                                             <h1>No Product Added Net</h1>

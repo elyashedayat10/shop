@@ -1,10 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'panel/base.html' %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="container-full">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="page-title">Product List</h3>
+                        <div class="d-inline-block align-items-center">
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <a class="btn btn-success" href="{% url 'products:create' %}"><h3>Add New
+                                            Product</h3></a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-</body>
-</html>
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="row">
+
+
+                    <div class="col-12">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">Product List</h4>
+                                <div class="box-controls pull-right">
+                                    <div class="lookup lookup-circle lookup-right">
+                                        <input type="text" name="s">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>name</th>
+                                            <th>screen_size</th>
+                                            <th>cpu_cache</th>
+                                            <th>ram</th>
+                                            <th>memory_capacity</th>
+                                            <th>count</th>
+                                            <th>edite</th>
+                                        </tr>
+                                        {% for product in product_list %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ product.name }}</td>
+                                                <td>{{ product.screen_size }}</td>
+                                                <td>{{ product.cpu_cache }}</td>
+                                                <td>{{ product.ram }}</td>
+                                                <td>{{ product.memory_capacity }}</td>
+                                                <td>{{ product.count }}</td>
+                                                <td><a href="{% url "products:update" product.slug %}">update</a></td>
+                                            </tr>
+                                        {% empty %}
+                                            <h1>No Product Added Net</h1>
+                                        {% endfor %}
+
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+
+                </div>
+                <!-- /.row -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+{% endblock %}

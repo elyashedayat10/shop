@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "panel/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="container-full">
+            <div class="content-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="page-title text-warning">Product Update {{ product }}</h3>
+                    </div>
+                </div>
+            </div>
+            <section class="content">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h4 class="box-title text-warning">Product Form</h4>
+                            </div>
+                            <div class="box-body">
+                                <form method="post" action="">
+                                    {% csrf_token %}
+                                    {% for field in form.visible_fields %}
+                                        <label class="col-form-label col-md-2">{{ field.label }}</label>
+                                        {{ field|add_class:'form-control' }}
+                                        {% for error in field.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    <br>
+                                    <br>
+                                    <button type="submit" class="form-control btn btn-warning">
+                                        Update Product
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </div>
+    </div>
+{% endblock content %}

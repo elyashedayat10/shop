@@ -43,6 +43,7 @@ class ProductUpdateView(AdminMixin, UpdateView):
     template_name = "products/update.html"
     SuccessMessageMixin = "updated successfully"
     form_class = ProductForm
+    context_object_name = 'product'
 
     def get_success_url(self):
-        return reverse("products:detail_admin", args=[self.kwargs.get("slug")])
+        return reverse("products:detail_admin", kwargs={'slug': self.object.slug})

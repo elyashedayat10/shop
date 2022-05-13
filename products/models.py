@@ -28,3 +28,4 @@ class Product(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("products:detail", args=[self.slug, ])
+

@@ -26,13 +26,14 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.admindocs",
-    #third
+    # third
     "django_extensions",
     "widget_tweaks",
     # local
     "accounts.apps.AccountsConfig",
     "profiles.apps.ProfilesConfig",
     "products.apps.ProductsConfig",
+    "brands.apps.BrandsConfig",
 ]
 
 MIDDLEWARE = [

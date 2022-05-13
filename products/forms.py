@@ -16,4 +16,9 @@ class ProductForm(forms.ModelForm):
             "battery_description",
             "count",
             "image",
+            "price",
         ]
+
+
+class AddToCartForm(forms.Form):
+    count = forms.IntegerField(min_value=1)

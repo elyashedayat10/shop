@@ -16,7 +16,8 @@ class Product(TimeStampedModel):
     memory_capacity = models.FloatField()
     battery_description = models.CharField(max_length=500)
     count = models.PositiveIntegerField()
-    image = models.ImageField(upload_to=get_file_path,blank=True)
+    image = models.ImageField(upload_to=get_file_path, blank=True)
+    price = models.IntegerField()
 
     def __str__(self):
         return self.name
@@ -26,5 +27,4 @@ class Product(TimeStampedModel):
         return super(Product, self).save()
 
     def get_absolute_url(self):
-        pass
-        # return reverse("products:detail", args=[self.name])
+        return reverse("products:detail", args=[self.slug, ])
